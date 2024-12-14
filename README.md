@@ -144,33 +144,33 @@ Clone the **PetFit** repository to your local machine.
 git clone https://github.com/yourusername/petfit.git
 ```
 
-2. Set Up the Database
-PetFit uses a MySQL database to manage user data, pet stats, and progress. Follow the steps below to set up the database:
+### 2. Set Up the Database
+- PetFit uses a MySQL database to manage user data, pet stats, and progress. Follow the steps below to set up the database:
 
-Create a MySQL Database:
+###Create a MySQL Database:
 
-Open MySQL Workbench or connect to your MySQL server via terminal.
+- Open MySQL Workbench or connect to your MySQL server via terminal.
 
-Create a new database by running the following SQL command:
+- Create a new database by running the following SQL command:
 CREATE DATABASE petfit;
 
 Import the Database Schema:
 
-Inside the project folder, navigate to the db/ directory and locate the init.sql file.
+- Inside the project folder, navigate to the db/ directory and locate the init.sql file.
 
-Run the init.sql script to initialize the required tables and data:
+- Run the init.sql script to initialize the required tables and data:
 
 bash
 Copy code
 mysql -u username -p petfit < db/init.sql
 Replace username with your MySQL username. This will set up the necessary tables for user information, pet stats, and progress tracking.
 
-3. Configure Database Connection
-Update Database Connection Settings:
+### 3. Configure Database Connection
+- Update Database Connection Settings:
 
-Navigate to the src/utilities/DatabaseConnection.java file.
+- Navigate to the src/utilities/DatabaseConnection.java file.
 
-Update the MySQL connection URL, username, and password with your MySQL server details:
+- Update the MySQL connection URL, username, and password with your MySQL server details:
 
 java
 Copy code
@@ -179,9 +179,9 @@ public class DatabaseConnection {
     private static final String USERNAME = "your_mysql_username";
     private static final String PASSWORD = "your_mysql_password";
 }
-Ensure that the MySQL connector JAR file (mysql-connector-j-9.1.0.jar) is placed in the libs/ directory. If it's missing, download the JAR file from the official MySQL website and place it in the libs/ folder.
+- Ensure that the MySQL connector JAR file (mysql-connector-j-9.1.0.jar) is placed in the libs/ directory. If it's missing, download the JAR file from the official MySQL website and place it in the libs/ folder.
 
-4. Set Up VSCode or IDE
+### 4. Set Up VSCode or IDE
 VSCode Setup:
 
 Open the project folder in VSCode.
@@ -191,7 +191,7 @@ IDE Setup:
 
 If using an IDE like IntelliJ IDEA or Eclipse, import the project as a Java project.
 Make sure the project’s JDK version matches the version specified in the prerequisites.
-5. Run the Application
+### 5. Run the Application
 Running from Main:
 
 The main entry point for the PetFit application is Main.java.
@@ -214,31 +214,31 @@ bash
 Copy code
 javac -d bin src/main/Main.java
 java -cp bin src.main.Main
-6. Application Interface
+### 6. Application Interface
 Once the application is running, follow the on-screen prompts:
 
 The main menu will appear, where you can:
-Create an account or log in.
-Track workouts and fitness progress.
-Take care of your virtual pet(s).
-Visit the shop to purchase items for your pets.
-View motivational messages and progress reports.
-7. Interacting with the PetFit App
-Workouts: Choose from predefined workouts or create your own. Each completed workout earns coins to care for your virtual pet.
-Pet Care: Feed and interact with your virtual pet to keep it happy and healthy.
-Leaderboards: Track your progress against other users through the global leaderboard.
-Progress Tracking: View your overall progress and set fitness goals.
-8. Troubleshooting
-Database Connection Issues:
+-Create an account or log in.
+-Track workouts and fitness progress.
+-Take care of your virtual pet(s).
+-Visit the shop to purchase items for your pets.
+-View motivational messages and progress reports.
+### 7. Interacting with the PetFit App
+-Workouts: Choose from predefined workouts or create your own. Each completed workout earns coins to care for your virtual pet.
+-Pet Care: Feed and interact with your virtual pet to keep it happy and healthy.
+-Progress Tracking: View your overall progress and set fitness goals.
 
-Double-check your MySQL credentials in the DatabaseConnection.java file.
-Ensure your MySQL server is running.
-Verify that the database schema was correctly set up using the init.sql script.
-Missing JAR File:
+### 8. Troubleshooting
+-Database Connection Issues:
 
-If the MySQL connector JAR file is missing, download it from the MySQL website and place it in the libs/ directory.
-Application Not Starting:
+-Double-check your MySQL credentials in the DatabaseConnection.java file.
+-Ensure your MySQL server is running.
+-Verify that the database schema was correctly set up using the init.sql script.
+-Missing JAR File:
 
-Ensure that Java is properly installed and configured on your system.
-Verify that all files are correctly compiled (use javac to compile if needed).
-Review error logs for any missing dependencies or incorrect configurations.
+-If the MySQL connector JAR file is missing, download it from the MySQL website and place it -in the libs/ directory.
+-Application Not Starting:
+
+-Ensure that Java is properly installed and configured on your system.
+-Verify that all files are correctly compiled (use javac to compile if needed).
+-Review error logs for any missing dependencies or incorrect configurations.
