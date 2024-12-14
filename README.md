@@ -84,6 +84,48 @@ public class Bear extends Pet {
     }
 }
 
+### 4. Polymorphism
+3. Polymorphism
+- Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables one interface to be used for a general class of actions, with the specific action being determined by the type of object that is performing it. This can be achieved through method overriding (runtime polymorphism) or method overloading (compile-time polymorphism).
+
+In PetFit:
+
+- Polymorphism is implemented by allowing specific pet types to override methods from the Pet class. This means that a single method call can result in different behavior depending on the actual object type (e.g., calling the feed() method on a Dog object will produce different behavior than calling it on a Rabbit object).
+- Example of Polymorphism in Pet and Rabbit classes:
+
+java
+Copy code
+public abstract class Pet {
+    public abstract void feed();  // Abstract method to be overridden by subclasses
+    public abstract void play();  // Abstract method to be overridden by subclasses
+}
+
+public class Dog extends Pet {
+    @Override
+    public void feed() {
+        // Dog-specific feeding behavior
+        System.out.println("Feeding the dog with dog food.");
+    }
+
+    @Override
+    public void play() {
+        // Dog-specific play behavior
+        System.out.println("The dog is fetching the ball.");
+    }
+}
+- Polymorphic behavior:
+
+java
+Copy code
+Pet myPet = new Dog();  // Creating a Dog object, but referring to it as a Pet
+myPet.feed();  // Calls Dog's feed method
+myPet.play();  // Calls Dog's play method
+Here, myPet is of type Pet, but it refers to an instance of the Dog class. When feed() and play() are called, the specific implementation for Dog is executed due to polymorphism.
+Why is this important?
+
+- Polymorphism enables flexible and extensible code, where new types of pets can be added without changing the existing code. As long as the new pet type extends the Pet class and overrides the necessary methods, the rest of the codebase will be able to interact with it seamlessly.
+- It helps achieve code reusability, as a single method or class can work with multiple types of objects.
+
 ---
 ## III. Details of the Chosen SDG and Its Integration into the PetFit Project
 
