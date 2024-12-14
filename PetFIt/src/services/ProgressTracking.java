@@ -12,7 +12,7 @@ public class ProgressTracking {
     // Constructor
     public ProgressTracking(User user) {
         this.user = user;
-        this.connection = DatabaseConnection.getConnection(); // Assuming you have a DatabaseConnection class
+        this.connection = DatabaseConnection.getConnection(); 
     }
 
     // Display progress stats (total workouts, total pets, total points, total coins)
