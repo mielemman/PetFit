@@ -2,11 +2,11 @@
 ![PetFit_Header](1.png)
 ## Project Description
 
--- **PetFit** is an interactive Java-based console application designed to motivate and engage users in maintaining a healthy lifestyle by combining fitness tracking with virtual pet care. The application provides an immersive experience where users can complete workouts, take care of virtual pets, and track their progress in real time.
+- **PetFit** is an interactive Java-based console application designed to motivate and engage users in maintaining a healthy lifestyle by combining fitness tracking with virtual pet care. The application provides an immersive experience where users can complete workouts, take care of virtual pets, and track their progress in real time.
 
--- The core concept behind **PetFit** is simple: users set fitness goals and complete workouts to earn coins, which can be used to purchase and care for virtual pets. The more consistent the user is in their workouts, the more progress they make, earning rewards and unlocking new pets. Each pet in the game requires food, playtime, and attention, creating an engaging way to encourage daily activity. Additionally, **PetFit** provides motivational tips, habit tracking, and a leaderboard system to further incentivize users.
+- The core concept behind **PetFit** is simple: users set fitness goals and complete workouts to earn coins, which can be used to purchase and care for virtual pets. The more consistent the user is in their workouts, the more progress they make, earning rewards and unlocking new pets. Each pet in the game requires food, playtime, and attention, creating an engaging way to encourage daily activity. Additionally, **PetFit** provides motivational tips, habit tracking, and a leaderboard system to further incentivize users.
 
--- This application is designed for users of all ages who are looking for an enjoyable way to stay active while also caring for virtual pets. Whether you’re a fitness enthusiast looking for motivation or someone who enjoys virtual pet games, **PetFit** combines both in a way that makes fitness fun and rewarding.
+- This application is designed for users of all ages who are looking for an enjoyable way to stay active while also caring for virtual pets. Whether you’re a fitness enthusiast looking for motivation or someone who enjoys virtual pet games, **PetFit** combines both in a way that makes fitness fun and rewarding.
 
 ### Features:
 
@@ -93,8 +93,7 @@ In PetFit:
 - Polymorphism is implemented by allowing specific pet types to override methods from the Pet class. This means that a single method call can result in different behavior depending on the actual object type (e.g., calling the feed() method on a Dog object will produce different behavior than calling it on a Rabbit object).
 - Example of Polymorphism in Pet and Rabbit classes:
 
-java
-Copy code
+```
 public abstract class Pet {
     public abstract void feed();  // Abstract method to be overridden by subclasses
     public abstract void play();  // Abstract method to be overridden by subclasses
@@ -113,11 +112,11 @@ public class Dog extends Pet {
         System.out.println("The dog is fetching the ball.");
     }
 }
+```
 - Polymorphic behavior:
 
-java
-Copy code
-```bash
+
+```
 Pet myPet = new Dog();  // Creating a Dog object, but referring to it as a Pet
 myPet.feed();  // Calls Dog's feed method
 myPet.play();  // Calls Dog's play method
@@ -183,7 +182,7 @@ Before you begin, ensure the following are installed on your system:
 
 Clone the **PetFit** repository to your local machine.
 
-```bash
+```
 git clone https://github.com/yourusername/petfit.git
 ```
 
@@ -203,9 +202,10 @@ Import the Database Schema:
 
 - Run the init.sql script to initialize the required tables and data:
 
-bash
-Copy code
+
+```
 mysql -u username -p petfit < db/init.sql
+```
 Replace username with your MySQL username. This will set up the necessary tables for user information, pet stats, and progress tracking.
 
 ### 3. Configure Database Connection
@@ -215,14 +215,15 @@ Replace username with your MySQL username. This will set up the necessary tables
 
 - Update the MySQL connection URL, username, and password with your MySQL server details:
 
-java
-Copy code
+
+```
 public class DatabaseConnection {
     private static final String URL = "jdbc:mysql://localhost:3306/petfit";
     private static final String USERNAME = "your_mysql_username";
     private static final String PASSWORD = "your_mysql_password";
 }
-- Ensure that the MySQL connector JAR file (mysql-connector-j-9.1.0.jar) is placed in the libs/ directory. If it's missing, download the JAR file from the official MySQL website and place it in the libs/ folder.
+```
+- Ensure that the MySQL connector JAR file ```(mysql-connector-j-9.1.0.jar)``` is placed in the libs/ directory. If it's missing, download the JAR file from the official MySQL website and place it in the libs/ folder.
 
 ### 4. Set Up VSCode or IDE
 VSCode Setup:
@@ -243,20 +244,21 @@ Running from Main:
 
 - If you're using VSCode, open the terminal and type:
 
-bash
-Copy code
+```
 javac src/main/Main.java
 java src.main.Main
+```
+
 This will compile and run the application.
 
 - Running from Command Line:
 
 - Alternatively, you can run the application from the command line. Open a terminal window in the root directory of the project and use the following commands:
 
-bash
-Copy code
+```
 javac -d bin src/main/Main.java
 java -cp bin src.main.Main
+```
 ### 6. Application Interface
 Once the application is running, follow the on-screen prompts:
 
