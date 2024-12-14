@@ -115,9 +115,7 @@ The **PetFit** project integrates SDG 3 by promoting both physical health and me
 
 Through these features, **PetFit** not only promotes physical health by encouraging regular exercise but also supports mental well-being by providing a rewarding and engaging experience. The combination of fitness and virtual pet care creates an environment that motivates users to improve both their physical and emotional health, in line with the objectives of **SDG 3**.
 
-# PetFit Project
-
-## IV. Instructions for Running the Program
+---
 
 # PetFit Project
 
@@ -218,23 +216,23 @@ java -cp bin src.main.Main
 Once the application is running, follow the on-screen prompts:
 
 The main menu will appear, where you can:
--Create an account or log in.
--Track workouts and fitness progress.
--Take care of your virtual pet(s).
--Visit the shop to purchase items for your pets.
--View motivational messages and progress reports.
+- Create an account or log in.
+- Track workouts and fitness progress.
+- Take care of your virtual pet(s).
+- Visit the shop to purchase items for your pets.
+- View motivational messages and progress reports.
 ### 7. Interacting with the PetFit App
--Workouts: Choose from predefined workouts or create your own. Each completed workout earns coins to care for your virtual pet.
--Pet Care: Feed and interact with your virtual pet to keep it happy and healthy.
--Progress Tracking: View your overall progress and set fitness goals.
+- Workouts: Choose from predefined workouts or create your own. Each completed workout earns coins to care for your virtual pet.
+- Pet Care: Feed and interact with your virtual pet to keep it happy and healthy.
+- Progress Tracking: View your overall progress and set fitness goals.
 
 ### 8. Troubleshooting
--Database Connection Issues:
+- Database Connection Issues:
 
--Double-check your MySQL credentials in the DatabaseConnection.java file.
--Ensure your MySQL server is running.
--Verify that the database schema was correctly set up using the init.sql script.
--Missing JAR File:
+- Double-check your MySQL credentials in the DatabaseConnection.java file.
+- Ensure your MySQL server is running.
+- Verify that the database schema was correctly set up using the init.sql script.
+- Missing JAR File:
 
 -If the MySQL connector JAR file is missing, download it from the MySQL website and place it -in the libs/ directory.
 -Application Not Starting:
