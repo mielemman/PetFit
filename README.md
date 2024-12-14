@@ -1,5 +1,5 @@
 # PetFit: A Virtual Pet and Fitness Tracking Application
-
+![PetFit_Header](1.png)
 ## Project Description
 
 **PetFit** is an interactive Java-based console application designed to motivate and engage users in maintaining a healthy lifestyle by combining fitness tracking with virtual pet care. The application provides an immersive experience where users can complete workouts, take care of virtual pets, and track their progress in real time.
