@@ -30,36 +30,36 @@
 The **PetFit** application is built with core **Object-Oriented Programming (OOP)** principles, ensuring the system is modular, scalable, and maintainable. OOP focuses on organizing software design around objects, which can be defined by their attributes and behaviors. The main OOP principles applied in the **PetFit** application include:
 
 ### 1. **Encapsulation**:
-Encapsulation refers to the bundling of data (attributes) and methods (behaviors) that operate on that data within a single unit or class. In **PetFit**, this is evident in how both Pet and User objects encapsulate their respective states and behaviors.
+Encapsulation refers to the bundling of data (attributes) and methods (behaviors) that operate on that data within a single unit or class. In **PetFit**, this is evident in how both `Pet` and `User` objects encapsulate their respective states and behaviors.
 
-- The Pet class holds attributes like name, hunger, happiness, and health. Each pet also has methods such as feed(), play(), and petAction() to change their state (e.g., updating hunger levels or happiness).
+- The Pet class holds attributes like name, hunger, happiness, and health. Each pet also has methods such as `feed()`, `play()`, and `petAction()` to change their state (e.g., updating hunger levels or happiness).
 
-- The User class encapsulates the user's information such as username, password, fitnessLevel, and coins. It includes methods that allow interaction with the user's pets, workouts, and goals.
+- The `User` class encapsulates the user's information such as `username`, `password`, `fitnessLevel`, and `coins`. It includes methods that allow interaction with the user's pets, workouts, and goals.
   
 This encapsulation keeps the internal state of objects private and only accessible through well-defined public methods, making the code more secure and easier to manage.
 
 ### 2. **Abstraction**:
 Abstraction simplifies complex systems by providing a high-level interface while hiding unnecessary details. In **PetFit**, this is applied through the use of base classes and overriding methods in subclasses.
 
-- The Pet class acts as an abstract concept for all pets. While the Pet class defines common attributes and actions (like feeding or playing), it does not specify the exact behavior for different types of pets (e.g., how a **Bear** or a **Dog** plays). This level of abstraction ensures that the application can define behaviors for different pets without modifying the base structure.
+- The Pet class acts as an abstract concept for all pets. While the Pet class defines common attributes and actions (like feeding or playing), it does not specify the exact behavior for different types of pets (e.g., how a `**Bear**` or a `**Dog**` plays). This level of abstraction ensures that the application can define behaviors for different pets without modifying the base structure.
   
-- Each specific pet class (e.g., Bear, Dog, Dragon) overrides methods like feed(), play(), and petAction() to provide unique implementations specific to the pet type. For example, the Dog class might print a message like "is running around and playing fetch!" whereas the Bear class might say "is roaring and hunting in the forest!".
+- Each specific pet class (e.g., `Bear`, `Dog`, `Dragon`) overrides methods like `feed()`, `play()`, and `petAction()` to provide unique implementations specific to the pet type. For example, the `Dog` class might print a message like "is running around and playing fetch!" whereas the `Bear` class might say "is roaring and hunting in the forest!".
 
 This abstraction allows for a clean, maintainable codebase where new types of pets can be added easily without altering existing code.
 
 ### 3. **Inheritance**:
 Inheritance allows a class (subclass) to inherit attributes and behaviors from another class (superclass). This promotes reusability and modularity in the application. In **PetFit**, inheritance is used extensively:
 
-- The Pet class is the superclass that provides common properties and methods shared by all pet types. It defines general attributes like hunger, happiness, health, and methods such as feed(), play(), and petAction(). 
-- Specific pet classes like Bear, Dog, Dragon, Pig, and Rabbit inherit from the Pet class. Each subclass provides its own implementation for the methods like feed() and play(), making them unique to each pet type.
+- The `Pet` class is the superclass that provides common properties and methods shared by all pet types. It defines general attributes like hunger, happiness, health, and methods such as `feed()`, `play()`, and `petAction()`. 
+- Specific pet classes like `Bear`, `Dog`, `Dragon`, `Pig`, and `Rabbit` inherit from the `Pet` class. Each subclass provides its own implementation for the methods like `feed()` and `play()`, making them unique to each pet type.
 
 This inheritance structure allows the application to maintain a clean and hierarchical organization, ensuring that common functionality is defined once in the Pet class and then extended by individual pet types.
 
 #### Example: The **Bear** class
-java
 
-public class Bear extends Pet {
-    public Bear(String name) {
+    }
+    public class Bear extends Pet {
+      public Bear(String name) {
         super(name, "Bear ASCII Art");
         this.hunger = 50;
         this.happiness = 50;
@@ -90,8 +90,8 @@ public class Bear extends Pet {
 
 In PetFit:
 
-- Polymorphism is implemented by allowing specific pet types to override methods from the Pet class. This means that a single method call can result in different behavior depending on the actual object type (e.g., calling the feed() method on a Dog object will produce different behavior than calling it on a Rabbit object).
-- Example of Polymorphism in Pet and Rabbit classes:
+- Polymorphism is implemented by allowing specific pet types to override methods from the `Pet` class. This means that a single method call can result in different behavior depending on the actual object type (e.g., calling the `feed()` method on a `Dog` object will produce different behavior than calling it on a Rabbit object).
+- Example of Polymorphism in `Pet` and `Rabbit` classes:
 
 ```
 public abstract class Pet {
@@ -122,7 +122,7 @@ myPet.feed();  // Calls Dog's feed method
 myPet.play();  // Calls Dog's play method
 ```
 
-- Here, myPet is of type Pet, but it refers to an instance of the Dog class. When feed() and play() are called, the specific implementation for Dog is executed due to polymorphism.
+- Here, `myPet` is of type `Pet`, but it refers to an instance of the `Dog` class. When `feed()` and `play()` are called, the specific implementation for `Dog` is executed due to polymorphism.
 # Why is this important?
 
 - Polymorphism enables flexible and extensible code, where new types of pets can be added without changing the existing code. As long as the new pet type extends the Pet class and overrides the necessary methods, the rest of the codebase will be able to interact with it seamlessly.
