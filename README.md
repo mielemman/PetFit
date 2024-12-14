@@ -235,7 +235,7 @@ IDE Setup:
 
 - If using an IDE like IntelliJ IDEA or Eclipse, import the project as a Java project.
 - Make sure the project’s JDK version matches the version specified in the prerequisites.
-# ## 5. Run the Application
+### 5. Run the Application
 Running from Main:
 
 - The main entry point for the PetFit application is Main.java.
@@ -268,7 +268,7 @@ The main menu will appear, where you can:
 -  Take care of your virtual pet(s).
 -  Visit the shop to purchase items for your pets.
 -  View motivational messages and progress reports.
-## # 7. Interacting with the PetFit App
+### 7. Interacting with the PetFit App
 -  Workouts: Choose from predefined workouts or create your own. Each completed workout earns coins to care for your virtual pet.
 -  Pet Care: Feed and interact with your virtual pet to keep it happy and healthy.
 -  Progress Tracking: View your overall progress and set fitness goals.
@@ -281,9 +281,9 @@ The main menu will appear, where you can:
 -  Verify that the database schema was correctly set up using the init.sql script.
 -  Missing JAR File:
 
--If the MySQL connector JAR file is missing, download it from the MySQL website and place it -in the libs/ directory.
--Application Not Starting:
+- If the MySQL connector JAR file is missing, download it from the MySQL website and place it -in the libs/ directory.
+- Application Not Starting:
 
--Ensure that Java is properly installed and configured on your system.
--Verify that all files are correctly compiled (use javac to compile if needed).
--Review error logs for any missing dependencies or incorrect configurations.
+- Ensure that Java is properly installed and configured on your system.
+- Verify that all files are correctly compiled (use javac to compile if needed).
+- Review error logs for any missing dependencies or incorrect configurations.
