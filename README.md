@@ -2,11 +2,11 @@
 ![PetFit_Header](1.png)
 ## Project Description
 
-**PetFit** is an interactive Java-based console application designed to motivate and engage users in maintaining a healthy lifestyle by combining fitness tracking with virtual pet care. The application provides an immersive experience where users can complete workouts, take care of virtual pets, and track their progress in real time.
+-- **PetFit** is an interactive Java-based console application designed to motivate and engage users in maintaining a healthy lifestyle by combining fitness tracking with virtual pet care. The application provides an immersive experience where users can complete workouts, take care of virtual pets, and track their progress in real time.
 
-The core concept behind **PetFit** is simple: users set fitness goals and complete workouts to earn coins, which can be used to purchase and care for virtual pets. The more consistent the user is in their workouts, the more progress they make, earning rewards and unlocking new pets. Each pet in the game requires food, playtime, and attention, creating an engaging way to encourage daily activity. Additionally, **PetFit** provides motivational tips, habit tracking, and a leaderboard system to further incentivize users.
+-- The core concept behind **PetFit** is simple: users set fitness goals and complete workouts to earn coins, which can be used to purchase and care for virtual pets. The more consistent the user is in their workouts, the more progress they make, earning rewards and unlocking new pets. Each pet in the game requires food, playtime, and attention, creating an engaging way to encourage daily activity. Additionally, **PetFit** provides motivational tips, habit tracking, and a leaderboard system to further incentivize users.
 
-This application is designed for users of all ages who are looking for an enjoyable way to stay active while also caring for virtual pets. Whether you’re a fitness enthusiast looking for motivation or someone who enjoys virtual pet games, **PetFit** combines both in a way that makes fitness fun and rewarding.
+-- This application is designed for users of all ages who are looking for an enjoyable way to stay active while also caring for virtual pets. Whether you’re a fitness enthusiast looking for motivation or someone who enjoys virtual pet games, **PetFit** combines both in a way that makes fitness fun and rewarding.
 
 ### Features:
 
