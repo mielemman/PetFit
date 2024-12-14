@@ -182,21 +182,21 @@ public class DatabaseConnection {
 ### 4. Set Up VSCode or IDE
 VSCode Setup:
 
-Open the project folder in VSCode.
-Ensure that you have the Java Extension Pack installed for Java support, which includes syntax highlighting, Maven/Gradle, etc.
-Check if your settings are configured by viewing or modifying the settings.json file located in the .vscode/ directory.
+-Open the project folder in VSCode.
+-Ensure that you have the Java Extension Pack installed for Java support, which includes syntax highlighting, Maven/Gradle, etc.
+-Check if your settings are configured by viewing or modifying the settings.json file located in the .vscode/ directory.
 IDE Setup:
 
-If using an IDE like IntelliJ IDEA or Eclipse, import the project as a Java project.
-Make sure the project’s JDK version matches the version specified in the prerequisites.
+-If using an IDE like IntelliJ IDEA or Eclipse, import the project as a Java project.
+-Make sure the project’s JDK version matches the version specified in the prerequisites.
 ### 5. Run the Application
 Running from Main:
 
-The main entry point for the PetFit application is Main.java.
+-The main entry point for the PetFit application is Main.java.
 
-Open src/main/Main.java in your IDE or VSCode and run the file.
+-Open src/main/Main.java in your IDE or VSCode and run the file.
 
-If you're using VSCode, open the terminal and type:
+-If you're using VSCode, open the terminal and type:
 
 bash
 Copy code
@@ -204,9 +204,9 @@ javac src/main/Main.java
 java src.main.Main
 This will compile and run the application.
 
-Running from Command Line:
+-Running from Command Line:
 
-Alternatively, you can run the application from the command line. Open a terminal window in the root directory of the project and use the following commands:
+-Alternatively, you can run the application from the command line. Open a terminal window in the root directory of the project and use the following commands:
 
 bash
 Copy code
