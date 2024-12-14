@@ -117,11 +117,14 @@ public class Dog extends Pet {
 
 java
 Copy code
+```bash
 Pet myPet = new Dog();  // Creating a Dog object, but referring to it as a Pet
 myPet.feed();  // Calls Dog's feed method
 myPet.play();  // Calls Dog's play method
-Here, myPet is of type Pet, but it refers to an instance of the Dog class. When feed() and play() are called, the specific implementation for Dog is executed due to polymorphism.
-Why is this important?
+```
+
+- Here, myPet is of type Pet, but it refers to an instance of the Dog class. When feed() and play() are called, the specific implementation for Dog is executed due to polymorphism.
+# Why is this important?
 
 - Polymorphism enables flexible and extensible code, where new types of pets can be added without changing the existing code. As long as the new pet type extends the Pet class and overrides the necessary methods, the rest of the codebase will be able to interact with it seamlessly.
 - It helps achieve code reusability, as a single method or class can work with multiple types of objects.
