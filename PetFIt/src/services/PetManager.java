@@ -64,18 +64,21 @@ public class PetManager {
         boolean running = true;
 
         while (running) {
-            
-
-            System.out.println("   ███████████████████");
-            System.out.println("   █▄─▄▄─█▄─▄▄─█─▄─▄─█");
-            System.out.println("   ██─▄▄▄██─▄█▀███─███");
-            System.out.println("   ▀▄▄▄▀▀▀▄▄▄▄▄▀▀▄▄▄▀▀");
-            System.out.println("\n--- Pet Management ---");
-            System.out.println("Choose a pet to manage:");
+            System.out.println();
+            System.out.println("       ███████████████████");
+            System.out.println("       █▄─▄▄─█▄─▄▄─█─▄─▄─█");
+            System.out.println("       ██─▄▄▄██─▄█▀███─███");
+            System.out.println("       ▀▄▄▄▀▀▀▄▄▄▄▄▀▀▄▄▄▀▀");
+            System.out.println("+------------------------------+");
+            System.out.println("|         Pet Management       |");
+            System.out.println("+------------------------------+");
+            System.out.println("Pets Owned:");
             for (int i = 0; i < user.getPets().size(); i++) {
                 System.out.println((i + 1) + ". " + user.getPets().get(i).getName());
             }
-            System.out.println("0. Exit");
+            System.out.println("[0] Exit");
+            System.out.println("+------------------------------+");
+            System.out.print("Choose a pet to manage: ");
 
             int choice = getValidInput(scanner, user.getPets().size());
             if (choice == 0) {
@@ -107,11 +110,13 @@ public class PetManager {
         boolean petRunning = true;
 
         while (petRunning) {
-            System.out.println("\n--- Manage Pet: " + pet.getName() + " ---");
+            System.out.println("+------------------------------+");
+            System.out.println("         Manage Pet: " + pet.getName());
+            pet.viewStats();
             System.out.println("1. Feed " + pet.getName());
             System.out.println("2. Play with " + pet.getName());
-            System.out.println("3. View " + pet.getName() + "'s Stats");
-            System.out.println("4. Back to Pet List");
+            System.out.println("3. Back to Pet List");
+            System.out.println("+------------------------------+");
             System.out.print("Choose an action: ");
 
             int action = getValidInput(scanner, 4);
@@ -126,32 +131,28 @@ public class PetManager {
                     System.out.println(pet.getName() + " is playing!");
                     break;
                 case 3:
-                    pet.viewStats();
-                    break;
-                case 4:
                     petRunning = false;
                     break;
                 default:
                     System.out.println("Invalid option! Please try again.");
             }
         }
-
     }
 
     public void decayAllPetStats() {
-        if (timerUtils.isTimeForStatDecay()) { // Check if it's time for stat decay
+        if (timerUtils.isTimeForStatDecay()) { 
             for (Pet pet : user.getPets()) {
                 int hunger = pet.getHunger();
                 int happiness = pet.getHappiness();
 
-                hunger = Math.max(0, hunger - 10);  // Decrease hunger
-                happiness = Math.max(0, happiness - 10);  // Decrease happiness
+                hunger = Math.max(0, hunger - 10);  
+                happiness = Math.max(0, happiness - 10);  
 
                 pet.setHunger(hunger);
                 pet.setHappiness(happiness);
 
                 if (hunger == 0 && happiness == 0) {
-                    int health = Math.max(0, pet.getHealth() - 10);  // Decrease health if both hunger and happiness are 0
+                    int health = Math.max(0, pet.getHealth() - 10);  
                     pet.setHealth(health);
                 }
 
