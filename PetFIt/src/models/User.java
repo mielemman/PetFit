@@ -12,7 +12,6 @@ public class User {
     private int points;
     private int streak;
     private int workoutsCompleted;
-    private int dailyTasksCompleted;
     private List<Pet> pets;
     private List<String> inventory;
     private int totalWorkoutsCompleted;
@@ -23,7 +22,7 @@ public class User {
     private DatabaseConnection dbConnection;
 
     // Constructor
-    public User(int id, String username, String password, int coins, int points, int streak, int workoutsCompleted, int dailyTasksCompleted) {
+    public User(int id, String username, String password, int coins, int points, int streak, int workoutsCompleted) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -31,10 +30,9 @@ public class User {
         this.points = points;
         this.streak = streak;
         this.workoutsCompleted = workoutsCompleted;
-        this.dailyTasksCompleted = dailyTasksCompleted;
         this.pets = new ArrayList<>();
         this.inventory = new ArrayList<>();
-        this.dbConnection = new DatabaseConnection();  // Initialize the database connection
+        this.dbConnection = new DatabaseConnection();  
         this.totalWorkoutsCompleted = workoutsCompleted;
         this.totalPetsOwned = 0;  
         this.totalPoints = points;
@@ -48,10 +46,9 @@ public class User {
         this.points = 0;
         this.streak = 0;
         this.workoutsCompleted = 0;
-        this.dailyTasksCompleted = 0;
         this.pets = new ArrayList<>();
         this.inventory = new ArrayList<>();
-        this.dbConnection = new DatabaseConnection();  // Initialize the database connection
+        this.dbConnection = new DatabaseConnection();  
         this.totalWorkoutsCompleted = 0;
         this.totalPetsOwned = 0;
         this.totalPoints = 0;
@@ -72,7 +69,7 @@ public class User {
     }
 
     public int getTotalCoins() {
-        return totalCoins;  // Ensure this method is in the User class
+        return totalCoins;  
     }
 
     public int getId() {
@@ -131,15 +128,6 @@ public class User {
         this.workoutsCompleted = workoutsCompleted;
     }
 
-    public int getDailyTasksCompleted() {
-        return dailyTasksCompleted;
-    }
-
-    public void setDailyTasksCompleted(int dailyTasksCompleted) {
-        this.dailyTasksCompleted = dailyTasksCompleted;
-    }
-
-
     public void updateProgress() {
         boolean success = dbConnection.updateUser(this);
         if (success) {
@@ -147,15 +135,6 @@ public class User {
         } else {
             System.out.println("Failed to update progress.");
         }
-    }
-
-    public void viewProfile() {
-        System.out.println("Username: " + username);
-        System.out.println("Coins: " + coins);
-        System.out.println("Points: " + points);
-        System.out.println("Streak: " + streak);
-        System.out.println("Workouts Completed: " + workoutsCompleted);
-        System.out.println("Daily Tasks Completed: " + dailyTasksCompleted);
     }
 
     public List<Pet> getPets() {
