@@ -17,6 +17,7 @@ public class WorkoutMenu {
         this.scanner = new Scanner(System.in);
     }
 
+
     public void displayMenu(User user) {
         boolean exit = false;
         while (!exit) {
@@ -34,7 +35,8 @@ public class WorkoutMenu {
             System.out.println("3. View Workout Progress");
             System.out.println("4. Add or Remove User-Defined Workout");
             System.out.println("5. Exit");
-            System.out.print("\nPlease enter your choice: ");
+            System.out.println("==============================================");
+            System.out.print("Please enter your choice: ");
             int choice = scanner.nextInt();
 
             switch (choice) {
@@ -63,12 +65,15 @@ public class WorkoutMenu {
   
     private void showPredefinedWorkouts(User user) {
         List<String> workouts = workoutManager.getPredefinedWorkouts();
-        System.out.println("\n=== Predefined Workouts ===");
+        System.out.println("+------------------------------+");
+        System.out.println("|      Predefined Workouts     |");
+        System.out.println("+------------------------------+");
         for (int i = 0; i < workouts.size(); i++) {
             System.out.println((i + 1) + ". " + workouts.get(i));
         }
-
-        System.out.print("\nSelect a workout program (1-" + workouts.size() + "), or 0 to return: ");
+        System.out.println("--------------------------------");
+    
+        System.out.print("Select a workout program (1-" + workouts.size() + "), or 0 to return: ");
         int workoutChoice = scanner.nextInt();
         if (workoutChoice == 0) {
             return; 
@@ -80,11 +85,14 @@ public class WorkoutMenu {
         }
     }
 
+
     private void showExercisesForWorkout(int workoutIndex, User user) {
         List<String> exercises = workoutManager.getExercisesForWorkout(workoutIndex);
         boolean allCompleted = true;
 
-        System.out.println("\n=== " + workoutManager.getPredefinedWorkouts().get(workoutIndex) + " Exercises ===");
+        System.out.println("+------------------------------+");
+        System.out.println(workoutManager.getPredefinedWorkouts().get(workoutIndex));
+        System.out.println("+------------------------------+");
         for (int i = 0; i < exercises.size(); i++) {
             String status = workoutManager.getExerciseCompletionStatus(workoutIndex, i) ? "(DONE)" : "(NOT DONE)";
             System.out.println((i + 1) + ". " + exercises.get(i) + " " + status);
@@ -93,7 +101,7 @@ public class WorkoutMenu {
             }
         }
 
-        System.out.println("\n0. Return to Workout Menu");
+        System.out.println("[0] Return to Workout Menu");
 
         if (allCompleted) {
             System.out.println("All exercises completed for this workout.");
@@ -116,25 +124,28 @@ public class WorkoutMenu {
 
 
     private void startExercise(int workoutIndex, int exerciseIndex, User user) {
+        System.out.println("+-------------------------------------------+");
         System.out.println("Starting exercise: " + workoutManager.getExercisesForWorkout(workoutIndex).get(exerciseIndex));
-
-
+        System.out.println("+-------------------------------------------+");
         System.out.print("Have you completed this exercise? (Y/N): ");
         String completion = scanner.next();
 
         if (completion.equalsIgnoreCase("Y")) {
             workoutManager.completeExercise(workoutIndex, exerciseIndex);
-
+            
+            coinPointsManager.increaseWorkout(1);
             coinPointsManager.increasePoints(10); 
             coinPointsManager.increaseCoins(10); 
             workoutManager.updateStreak();
-            System.out.println("---------------------------------------------------");
-            System.out.println("5 points and 5 coins earned! Keep up the good work.");
+            System.out.println("+---------------------------------------------------+");
+            System.out.println("|10 points and 10 coins earned! Keep up the good work.|");
+            System.out.println("+---------------------------------------------------+");
         } else {
             workoutManager.resetStreak();
-            System.out.println("Try again tomorrow.");
+            System.out.println("Try again later.");
         }
     }
+
 
     private void showUserDefinedWorkouts(User user) {
         List<String> userWorkouts = workoutManager.getUserDefinedWorkouts();
@@ -144,7 +155,9 @@ public class WorkoutMenu {
             return;
         }
 
-        System.out.println("\n=== User-Defined Workouts ===");
+        System.out.println("+------------------------------+");
+        System.out.println("|     User-Defined Workouts    |");
+        System.out.println("+------------------------------+");
         for (int i = 0; i < userWorkouts.size(); i++) {
             System.out.println((i + 1) + ". " + userWorkouts.get(i));
         }
@@ -160,7 +173,9 @@ public class WorkoutMenu {
             List<String> exercises = workoutManager.getExercisesForUserDefinedWorkout(workoutChoice - 1);
             boolean allCompleted = true;
 
-            System.out.println("\n=== Exercises for " + userWorkouts.get(workoutChoice - 1) + " ===");
+            System.out.println("+------------------------------+");
+            System.out.println("  Exercises for " + userWorkouts.get(workoutChoice - 1));
+            System.out.println("+------------------------------+");
             for (int i = 0; i < exercises.size(); i++) {
                 String status = workoutManager.getUserDefinedExerciseCompletionStatus(workoutChoice - 1, i) ? "(DONE)" : "(NOT DONE)";
                 System.out.println((i + 1) + ". " + exercises.get(i) + " " + status);
@@ -170,6 +185,7 @@ public class WorkoutMenu {
             }
 
             if (allCompleted) {
+                System.out.println("+---------------------------------------+");
                 System.out.println("All exercises completed for this workout.");
             }
 
@@ -193,27 +209,34 @@ public class WorkoutMenu {
 
 
     private void startUserDefinedExercise(int workoutIndex, int exerciseIndex, User user) {
+        System.out.println("+-------------------------------------------+");
         System.out.println("Starting exercise: " + workoutManager.getExercisesForUserDefinedWorkout(workoutIndex).get(exerciseIndex));
+        System.out.println("+-------------------------------------------+");
 
-     
         System.out.print("Have you completed this exercise? (Y/N): ");
         String completion = scanner.next();
 
         if (completion.equalsIgnoreCase("Y")) {
             workoutManager.setUserDefinedExerciseCompletionStatus(workoutIndex, exerciseIndex, true);
          
+            coinPointsManager.increaseWorkout(1);
             coinPointsManager.increasePoints(5);  
             coinPointsManager.increaseCoins(5);  
             workoutManager.updateStreak();
-            System.out.println("5 points and 5 coins earned! Keep up the good work.");
+            System.out.println("+---------------------------------------------------+");
+            System.out.println("|10 points and 10 coins earned! Keep up the good work.|");
+            System.out.println("+---------------------------------------------------+");
         } else {
             workoutManager.resetStreak();
-            System.out.println("Try again tomorrow.");
+            System.out.println("Try again later.");
         }
     }
 
+    
     private void addOrRemoveUserDefinedWorkout(User user) {
-        System.out.println("\nWould you like to add or remove a user-defined workout?");
+        System.out.println("+---------------------------------------------------------+");
+        System.out.println("|\nWould you like to add or remove a user-defined workout?|");
+        System.out.println("+---------------------------------------------------------+");
         System.out.println("1. Add");
         System.out.println("2. Remove");
         System.out.print("Enter your choice: ");
