@@ -13,12 +13,10 @@ public class CoinPointsManager {
         this.dbConnection = new DatabaseConnection();  
     }
 
-
     private boolean updateUser(User user) {
         return dbConnection.updateUser(user); 
     }
 
-   
     public void increaseCoins(int amount) {
         user.setCoins(user.getCoins() + amount);
         if (updateUser(user)) {
@@ -27,7 +25,6 @@ public class CoinPointsManager {
             System.out.println("Failed to update coins in the database.");
         }
     }
-
   
     public void decreaseCoins(int amount) {
         if (user.getCoins() >= amount) {
@@ -51,7 +48,6 @@ public class CoinPointsManager {
         }
     }
 
-
     public void decreasePoints(int amount) {
         if (user.getPoints() >= amount) {
             user.setPoints(user.getPoints() - amount);
@@ -64,26 +60,6 @@ public class CoinPointsManager {
             System.out.println("Not enough points.");
         }
     }
-
-    public void transferPoints(User fromUser, User toUser, int amount) {
-        if (fromUser.getPoints() >= amount) {
-            fromUser.setPoints(fromUser.getPoints() - amount);
-            toUser.setPoints(toUser.getPoints() + amount);
-
-            
-            boolean successFrom = updateUser(fromUser);
-            boolean successTo = updateUser(toUser);
-
-            if (successFrom && successTo) {
-                System.out.println(amount + " points have been transferred from " + fromUser.getUsername() + " to " + toUser.getUsername());
-            } else {
-                System.out.println("Failed to transfer points.");
-            }
-        } else {
-            System.out.println("Not enough points to transfer.");
-        }
-    }
-
     
     public boolean canAfford(int points, int coins) {
         if (user.getPoints() >= points && user.getCoins() >= coins) {
@@ -94,8 +70,12 @@ public class CoinPointsManager {
         }
     }
 
-   
-    public void increasePointsForWorkout(int points) {
-        increasePoints(points); 
+    public void increaseWorkout(int amount) {
+        user.setWorkoutsCompleted(user.getWorkoutsCompleted() + amount);
+        if (updateUser(user)) {
+            System.out.println(amount + " workout completed have been added.");
+        } else {
+            System.out.println("Failed to update workout completed in the database.");
+        }
     }
 }
