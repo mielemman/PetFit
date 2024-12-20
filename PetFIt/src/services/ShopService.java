@@ -20,7 +20,7 @@ public class ShopService {
     private CoinPointsManager coinPointsManager; 
     private DatabaseConnection databaseConnection; 
 
-    // Constructor
+    
     public ShopService(User user) {
         this.user = user;
         this.scanner = new Scanner(System.in);
@@ -29,7 +29,7 @@ public class ShopService {
         initializeShopItems();
     }
 
-    // Initialize available items in the shop
+    
     private void initializeShopItems() {
         items = new HashMap<>();
         items.put("Pet Food", 10);
@@ -43,22 +43,24 @@ public class ShopService {
         items.put("Dragon (Pet)", 350);
     }
 
-    // Display available items in the shop with improved formatting
+
     public void displayItems() {
-        System.out.println("\n=== Available Items ===");
+        System.out.println("+------------------------------+");
+        System.out.println("|        Available Items       |");
+        System.out.println("+------------------------------+");
         System.out.println("Here are the items you can purchase:");
         items.forEach((itemName, cost) -> {
             System.out.printf("%-20s : %d coins\n", itemName, cost);
         });
+        System.out.println("+------------------------------+");
     }
 
-    // Method to purchase a specific pet with clearer prompts
+
     public void purchasePet(String petName) {
         if (!items.containsKey(petName)) {
             System.out.println("Pet not found in the shop.");
             return;
         }
-
        
         int petCost = items.get(petName);
         if (coinPointsManager.canAfford(0, petCost)) {  
@@ -74,7 +76,7 @@ public class ShopService {
         }
     }
 
- 
+
     private Pet createPet(String petName) {
         switch (petName) {
             case "Cat (Pet)": return new Cat("Cat");
@@ -89,6 +91,7 @@ public class ShopService {
         }
     }
 
+    
     private void savePetToDatabase(Pet pet) {
         String query = "INSERT INTO Pets (user_id, name, type, hunger, happiness, health) VALUES (?, ?, ?, ?, ?, ?)";
         
@@ -109,7 +112,7 @@ public class ShopService {
         }
     }
 
- 
+
     public void addShopItem(String itemName, int cost) {
         if (items.containsKey(itemName)) {
             System.out.println(itemName + " is already available in the shop.");
@@ -131,12 +134,15 @@ public class ShopService {
 
  
     public void displayUserInventory() {
-        System.out.println("\n=== Your Inventory ===");
+        System.out.println("+------------------------------+");
+        System.out.println("|         Your Inventory       |");
+        System.out.println("+------------------------------+");
         if (user.getInventory().isEmpty()) {
             System.out.println("Your inventory is empty.");
         } else {
             user.getInventory().forEach(item -> System.out.println("- " + item));
         }
+        System.out.println("+------------------------------+");
     }
 
 
@@ -150,13 +156,17 @@ public class ShopService {
             System.out.println("   █▄▄▄▄─█─▄─█─██─██─▄▄▄█");
             System.out.println("   ▀▄▄▄▄▄▀▄▀▄▀▄▄▄▄▀▄▄▄▀▀▀");
 
-            System.out.println("\n=== Welcome to the Shop ===");
+            System.out.println("+------------------------------+");
+            System.out.println("|      Welcome to the Shop     |");
+            System.out.println("+------------------------------+");
             System.out.println("Total Coins: " + user.getCoins());
+            System.out.println("+------------------------------+");
             System.out.println("1. View Available Items");
             System.out.println("2. View Your Inventory");
             System.out.println("3. Purchase an Item");
             System.out.println("4. Purchase a Pet");
             System.out.println("5. Exit Shop");
+            System.out.println("+------------------------------+");
 
             int choice = getValidMenuChoice();  
 
@@ -204,14 +214,14 @@ public class ShopService {
 
 
     private void purchaseItemPrompt() {
-        System.out.print("Enter the name of the item you wish to purchase: ");
+        System.out.print("Enter the name of the item you wish to purchase [enter to exit]: ");
         String itemName = scanner.nextLine();
         purchaseItem(itemName);
     }
 
 
     private void purchasePetPrompt() {
-        System.out.print("Enter the name of the pet you wish to purchase (e.g., 'Cat', 'Dragon'): ");
+        System.out.print("Enter the name of the pet you wish to purchase (e.g., 'Cat', 'Dragon') [enter to exit]: ");
         String petName = scanner.nextLine();
         purchasePet(petName); 
     }
