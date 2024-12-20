@@ -2,43 +2,39 @@ package services;
 
 import java.util.ArrayList;
 import java.util.List;
+import models.User;
+import utilities.DatabaseConnection;
 
 public class WorkoutManager {
+    private User user;
     private List<String> predefinedWorkouts;
     private List<List<String>> exercises;
     private boolean[][] workoutCompletionStatus;
-    private int completedWorkouts;
-    private int streakCount; 
 
-    private List<String> userDefinedWorkouts;  
-    private List<List<String>> userDefinedExercises;  
-    private boolean[][] userDefinedCompletionStatus;  
+    private List<String> userDefinedWorkouts;
+    private List<List<String>> userDefinedExercises;
+    private boolean[][] userDefinedCompletionStatus;
 
-    
-    public WorkoutManager() {
+
+    public WorkoutManager(User user) {
+        this.user = user;
         predefinedWorkouts = new ArrayList<>();
         exercises = new ArrayList<>();
-        completedWorkouts = 0;
-        streakCount = 0;
 
-        
         loadPredefinedWorkouts();
 
-        
         workoutCompletionStatus = new boolean[predefinedWorkouts.size()][]; 
         for (int i = 0; i < exercises.size(); i++) {
             workoutCompletionStatus[i] = new boolean[exercises.get(i).size()];
         }
 
-        
         userDefinedWorkouts = new ArrayList<>();
         userDefinedExercises = new ArrayList<>();
-        userDefinedCompletionStatus = new boolean[10][];
+        userDefinedCompletionStatus = new boolean[10][]; // Assuming a max of 10 custom workouts
     }
 
-   
+
     private void loadPredefinedWorkouts() {
-        
         predefinedWorkouts.add("Strength Training");
         List<String> strengthExercises = new ArrayList<>();
         strengthExercises.add("Squat (3 sets of 10 reps)");
@@ -64,34 +60,53 @@ public class WorkoutManager {
         return predefinedWorkouts;
     }
 
+
     public List<String> getExercisesForWorkout(int workoutIndex) {
         return exercises.get(workoutIndex);
     }
 
+
     public void completeExercise(int workoutIndex, int exerciseIndex) {
-        workoutCompletionStatus[workoutIndex][exerciseIndex] = true;
-        completedWorkouts++;
+        if (!workoutCompletionStatus[workoutIndex][exerciseIndex]) {
+            workoutCompletionStatus[workoutIndex][exerciseIndex] = true;
+            user.setWorkoutsCompleted(user.getWorkoutsCompleted() + 1); // Update completed workouts in User
+            System.out.println("Exercise completed! Total completed workouts: " + user.getWorkoutsCompleted());
+
+            updateStreak();
+        } else {
+            System.out.println("This exercise is already completed.");
+        }
     }
 
 
     public void updateStreak() {
-        streakCount++;
+        user.setStreak(user.getStreak() + 1); // Increment streak in User
+        System.out.println("Streak updated! Current streak: " + user.getStreak());
+
+        if (!DatabaseConnection.updateUser(user)) {
+            System.out.println("Failed to update streak in database.");
+        }
     }
+
 
     public void resetStreak() {
-        streakCount = 0;
-    }
+        user.setStreak(0); 
+        System.out.println("Streak reset!");
 
-
-    public int getStreakCount() {
-        return streakCount;
+        // Reset the streak in the database
+        if (!DatabaseConnection.updateUser(user)) {
+            System.out.println("Failed to reset streak in database.");
+        }
     }
 
 
     public void viewProgress() {
-        System.out.println("=== Workout Progress ===");
-        System.out.println("Workout Streak: " + streakCount + " days");
-        System.out.println("Total Workouts Completed: " + completedWorkouts);
+        System.out.println("+------------------------------+");
+        System.out.println("|        Workout Progress      |");
+        System.out.println("+------------------------------+");
+        System.out.println("Total Workouts Completed: " + user.getWorkoutsCompleted());
+        System.out.println("Workout Streak: " + user.getStreak() + " streak");
+        System.out.println("+------------------------------+");
     }
 
 
@@ -99,18 +114,19 @@ public class WorkoutManager {
         return workoutCompletionStatus[workoutIndex][exerciseIndex];
     }
 
-    
+
     public void setExerciseCompletionStatus(int workoutIndex, int exerciseIndex, boolean status) {
         workoutCompletionStatus[workoutIndex][exerciseIndex] = status;
     }
 
-   
+
     public void addUserDefinedWorkout(String workoutName, List<String> exercisesList) {
         userDefinedWorkouts.add(workoutName);
         userDefinedExercises.add(exercisesList);
 
         userDefinedCompletionStatus[userDefinedWorkouts.size() - 1] = new boolean[exercisesList.size()];
     }
+
 
     public void removeUserDefinedWorkout(int workoutIndex) {
         userDefinedWorkouts.remove(workoutIndex);
@@ -121,22 +137,23 @@ public class WorkoutManager {
         userDefinedCompletionStatus[userDefinedWorkouts.size()] = null;
     }
 
+
     public List<String> getUserDefinedWorkouts() {
         return userDefinedWorkouts;
     }
+
 
     public List<String> getExercisesForUserDefinedWorkout(int workoutIndex) {
         return userDefinedExercises.get(workoutIndex);
     }
 
+
     public boolean getUserDefinedExerciseCompletionStatus(int workoutIndex, int exerciseIndex) {
         return userDefinedCompletionStatus[workoutIndex][exerciseIndex];
     }
 
+    
     public void setUserDefinedExerciseCompletionStatus(int workoutIndex, int exerciseIndex, boolean status) {
         userDefinedCompletionStatus[workoutIndex][exerciseIndex] = status;
     }
 }
-
-
-
