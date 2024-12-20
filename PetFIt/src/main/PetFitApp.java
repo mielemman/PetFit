@@ -8,7 +8,7 @@ import utilities.*;
 public class PetFitApp {
     private static User currentUser;
     private static PetManager petManager;
-    private static WorkoutManager workoutManager = new WorkoutManager();
+    private static WorkoutManager workoutManager;
     private static WorkoutMenu workoutMenu;
     private static ShopService shopService;
     private static ProgressTracking progressTracking;
@@ -35,9 +35,10 @@ public class PetFitApp {
         System.out.println("|            WELCOME TO PETFIT!             |");
         System.out.println("|                                           |");
         System.out.println("+-------------------------------------------+");
-        System.out.println("\n1. Login");
+        System.out.println("1. Login");
         System.out.println("2. Register");
         System.out.println("3. Exit");
+        System.out.println("+-------------------------------------------+");
         System.out.print("Choose an option: ");
 
         int choice = getValidChoice(1, 3);
@@ -49,14 +50,19 @@ public class PetFitApp {
     }
 
     private static void loginUser() {
-        System.out.print("\nEnter username: ");
+        System.out.println("+-------------------------------------------+");
+        System.out.print("Enter username: ");
         String username = scanner.nextLine();
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
 
         currentUser = databaseConnection.authenticateUser(username, password);
         if (currentUser != null) {
+            System.out.println("+-------------------------------------------+");
             System.out.println("\nLogin successful! Welcome, " + username + " !");
+
+            workoutManager = new WorkoutManager(currentUser);
+
             initializeServices();
             mainMenu();
         } else {
@@ -85,18 +91,19 @@ public class PetFitApp {
 
         while (running) {
             handleTimers();
-            System.out.println("\n██████████████████████████████");
-            System.out.println("█▄─▀█▀─▄█▄─▄▄─█▄─▀█▄─▄█▄─██─▄█");
-            System.out.println("██─█▄█─███─▄█▀██─█▄▀─███─██─██");
-            System.out.println("▀▄▄▄▀▄▄▄▀▄▄▄▄▄▀▄▄▄▀▀▄▄▀▀▄▄▄▄▀▀");
+            System.out.println("\n ██████████████████████████████");
+            System.out.println(" █▄─▀█▀─▄█▄─▄▄─█▄─▀█▄─▄█▄─██─▄█");
+            System.out.println(" ██─█▄█─███─▄█▀██─█▄▀─███─██─██");
+            System.out.println(" ▀▄▄▄▀▄▄▄▀▄▄▄▄▄▀▄▄▄▀▀▄▄▀▀▄▄▄▄▀▀");
             System.out.println("+------------------------------+");
             System.out.println("|          Main Menu           |");
-            System.out.println("|------------------------------|");
+            System.out.println("+------------------------------+");
             System.out.println("1. View Progress");
             System.out.println("2. Start Workout");
             System.out.println("3. Manage Pets");
             System.out.println("4. Shop");
             System.out.println("5. Logout");
+            System.out.println("+------------------------------+");
             System.out.print("Choose an option: ");
 
             int choice = getValidChoice(1, 5);
