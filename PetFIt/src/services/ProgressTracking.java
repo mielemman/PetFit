@@ -18,7 +18,7 @@ public class ProgressTracking {
     public void displayProgress() {
         try {
 
-            String query = "SELECT coins, points, workouts_completed FROM Users WHERE id = ?";
+            String query = "SELECT coins, points, streak, workouts_completed FROM Users WHERE id = ?";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setInt(1, user.getId());
             ResultSet rs = stmt.executeQuery();
@@ -26,7 +26,9 @@ public class ProgressTracking {
             if (rs.next()) {
                 int totalCoins = rs.getInt("coins");
                 int totalPoints = rs.getInt("points");
+                int streak = rs.getInt("streak");
                 int totalWorkoutsCompleted = rs.getInt("workouts_completed");
+                
 
                 query = "SELECT COUNT(*) AS total_pets FROM Pets WHERE user_id = ?";
                 stmt = connection.prepareStatement(query);
@@ -48,6 +50,8 @@ public class ProgressTracking {
                 System.out.println("Total Pets Owned: " + totalPetsOwned);
                 System.out.println("Total Points: " + totalPoints);
                 System.out.println("Total Coins: " + totalCoins);
+                System.out.println("Current Streak: " + streak + " workouts");
+                System.out.println("==============================================");
             }
 
         } catch (SQLException e) {
